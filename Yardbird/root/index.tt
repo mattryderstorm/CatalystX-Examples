@@ -1,0 +1,17 @@
+[% INCLUDE header.tt title = 'The YARDBIRD Fan Club'; %]
+<div id="header">
+  <div id="header_title">The YARDBIRD Fan Club</div>
+  <div id="header_subtitle">Celebrating the NFL Rookie Sensation!</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="content_without_sidebar">
+    <h3>Take A Ride...</h3>
+    [% FOREACH blog_entry IN blog_entries %]
+      <p><a href="[% c.uri_for_action('/blog', blog_entry.id) %]">[% blog_entry.title %]</a></p>
+      <p>[% blog_entry.content %]</p>
+    [% END %]
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]

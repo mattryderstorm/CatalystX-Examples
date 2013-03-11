@@ -1,0 +1,28 @@
+[% INCLUDE header.tt title = 'The YARDBIRD Fan Club'; %]
+<div id="header">
+  <div id="header_title">The YARDBIRD Fan Club</div>
+  <div id="header_subtitle">Celebrating the NFL Rookie Sensation!</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="sidebar_wrapper">
+
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        [% FOREACH user_entry IN all_user_entries %]
+          <p>[% user_entry.title %]</p>
+          <p>[% user_entry.content %]</p>
+        [% END %]
+      </div> <!-- sidebar_item_content -->
+    </div> <!-- sidebar_item -->
+  </div> <!-- sidebar_wrapper -->
+
+  <div id="content_with_sidebar">
+    <h3>On The Wild Side.</h3>
+    <p>blog_entry.id: [% blog_entry.id %]</p>
+    <p>blog_entry.title: [% blog_entry.title %]</p>
+    <p>blog_entry.content: [% blog_entry.content %]</p>
+    <p>blog_entry.userid.name: [% blog_entry.userid.name %]</p>
+  </div> <!-- content_with_sidebar -->
+</div> <!-- content_wrapper -->
+[% INCLUDE footer.tt %]
