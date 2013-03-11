@@ -1,0 +1,26 @@
+[% INCLUDE header.tt title = 'The YARDBIRD Fan Club: '_ blog_entry.userid.name %]
+<div id="header">
+  <div id="header_title">[% blog_entry.userid.name %]</div>
+  <div id="header_subtitle">The YARDBIRD Fan Club</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="sidebar_wrapper">
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        [% FOREACH entry IN blog_entries %]
+          <p class="sidebar_item_title"><a href="[% c.uri_for_action('/blog/entries/index', entry.id) %]">[% entry.title %]</a></p>
+          <p class="sidebar_item_subtitle">[% entry.created.strftime('%B %e, %Y %l:%M %p') %]</p> 
+        [% END %]
+      </div>
+    </div>
+  </div>
+
+  <div id="content_with_sidebar">
+    <p class="content_title">[% blog_entry.title %]</p>
+    <p class="content_subtitle">By <strong>[% blog_entry.userid.name %]</strong> on [% blog_entry.created.strftime('%B %e, %Y %l:%M %p') %]</p> 
+    <p>[% blog_entry.content %]</p>
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]

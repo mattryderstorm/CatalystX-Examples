@@ -1,0 +1,41 @@
+[% INCLUDE header.tt title = 'The YARDBIRD Fan Club: Blog'; %]
+<div id="header">
+  <div id="header_title">The YARDBIRD Fan Club</div>
+  <div id="header_subtitle">Celebrating the NFL Rookie Sensation!</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="sidebar_wrapper">
+
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        <p><strong>Recent Blog Entries</strong></p>
+        [% FOREACH blog_entry IN blog_entries %]
+          <p class="sidebar_item_title"><a href="[% c.uri_for_action('/blog/index') _ '#bid' _ blog_entry.id %]">[% blog_entry.title %]</a></p>
+          <p class="sidebar_item_subtitle">By <strong>[% members.specific(blog_entry.userid).name %]</strong></p> 
+          <p class="sidebar_item_sub_subtitle">[% blog_entry.created.strftime('%B %e, %Y %l:%M %p') %]</p> 
+        [% END %]
+      </div>
+    </div>
+
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        <p><strong>Member Blogs</strong></p>
+        [% FOREACH member IN sorted_members %]
+          <p class="sidebar_item_title"><a href="[% c.uri_for_action('/blog/entries/index', member.bid) %]">[% member.name %]</a></p>
+        [% END %]
+      </div>
+    </div>
+
+  </div>
+
+  <div id="content_with_sidebar">
+    [% FOREACH blog_entry IN blog_entries %]
+      <p class="content_title" id="[% 'bid' _ blog_entry.id %]"><a href="[% c.uri_for_action('/blog/entries/index', blog_entry.id) %]">[% blog_entry.title %]</a></p> 
+      <p class="content_subtitle">By <strong>[% blog_entry.userid.name %]</strong> on [% blog_entry.created.strftime('%B %e, %Y %l:%M %p') %]</p> 
+      <p>[% blog_entry.content %]</p>
+    [% END %]
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]
