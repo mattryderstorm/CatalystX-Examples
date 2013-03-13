@@ -27,3 +27,5 @@ sub create :Local {
   # Form validated, return to home
   $c->res->redirect($c->uri_for_action('/index'));
 }
+
+1;
